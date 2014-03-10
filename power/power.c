@@ -1,4 +1,4 @@
-float calc_power_r(float volt float resistance) {
+float calc_power_r(float volt, float resistance) {
   
   float result = 0;
 
@@ -11,15 +11,15 @@ float calc_power_r(float volt float resistance) {
   return result;
 }
 
-float calc_power_i(float volt float current) {
+float calc_power_i(float volt, float current) {
   
   if(volt == 0 || current == 0) {
     return 0;
   }
 
-  float result;
+  float result = 0;
 
   result = volt * current;
   
-  return 0.0;
+  return result;
 }
