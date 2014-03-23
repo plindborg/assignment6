@@ -35,6 +35,7 @@ install: main.c lib/libpower.so lib/libcomponent.so lib/libresistance.so
 		chmod 0755 $(LIBINSTDIR)/libcomponent.so;\
 		ldconfig;\
 		$(CC) -L$(LIBINSTDIR) -Wall -o electrotest main.c -lcomponent -lresistance -lpower;\
+		echo "Installerat i $(LIBINSTDIR)";\
 	else \
 		echo "$(LIBINSTDIR) kunde inte hittas";\
 	fi;
@@ -56,6 +57,7 @@ uninstall:
 	$(RM) $(LIBINSTDIR)/libcomponent.so
 	@echo "Entering $(INSTDIR)"
 	$(RM) $(INSTDIR)/electrotest
+	@ldconfig
 	@echo "electotest uninstalled"
 
 clean:
