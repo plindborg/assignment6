@@ -1,11 +1,13 @@
 INSTDIR = /usr/local/bin
 LIBINSTDIR = /usr/local/lib
+LOCALLIB = lib/
 CC = gcc # C compiler
 CFLAGS = -fPIC -Wall -Wextra -Werror -O2 -c -std=c99 # C flags
 LDFLAGS = -shared -o  # linking flags
 RM = rm -f  # rm command
 
 all: main.c component/component.c resistance/resistance.c power/power.c
+	mkdir -p $(LOCALLIB)
 	$(CC) $(CFLAGS) component/component.c
 	$(CC) $(LDFLAGS) lib/libcomponent.so component.o
 	$(CC) $(CFLAGS)  resistance/resistance.c
@@ -15,16 +17,21 @@ all: main.c component/component.c resistance/resistance.c power/power.c
 	$(CC) -L$(CURDIR)/lib -Wall -o electrotest main.c -lcomponent -lresistance -lpower
 
 resistance: resistance/resistance.c
+	mkdir -p $(LOCALLIB)
 	$(CC) $(CFLAGS) resistance/resistance.c
 	$(CC) $(LDFLAGS) lib/libresistance.so resistance.o 
 
 component: component/component.c
+	mkdir -p $(LOCALLIB)
 	$(CC) $(CFLAGS) component/component.c
 	$(CC) $(LDFLAGS) lib/libcomponent.so component.o
 
 power: power/power.c
+	mkdir -p $(LOCALLIB)
 	$(CC) $(CFLAGS) power/power.c
 	$(CC) $(LDFLAGS) lib/libpower.so power.o
+
+lib: power component resistance
 
 install: main.c lib/libpower.so lib/libcomponent.so lib/libresistance.so
 	@if [ -d $(LIBINSTDIR) ];\
