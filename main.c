@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "resistance/resistance.h"
 #include "power/power.h"
-#include "components/components.h"
+#include "component/component.h"
 
 
 int main(void)
