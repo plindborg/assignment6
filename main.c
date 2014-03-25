@@ -29,7 +29,7 @@ int main(void)
   }
   
   resistance =  calc_resistance(count,sp,components); /* calculate resistance */
-  printf("Ersattningsresistans: %.1f ohm\n", resistance) ; 
+  printf("Ersättningsresistans: %.1f ohm\n", resistance) ; 
   printf("Effekt: %.2f W\n",  calc_power_r(voltage, resistance)); /* calculate power */
    
   int value = e_resistance(resistance, p_array); /* calculate resistors */
