@@ -2,27 +2,41 @@
 #include <stdlib.h>
 #include "resistance/resistance.h"
 #include "power/power.h"
-#include "component/component.h"
+#include "components/components.h"
+
 
 int main(void)
 {
   float *p_array;
+  float voltage, resistance;
+  char sp;
+  int count, i;
+  float *components;
   p_array = (float *)malloc(sizeof(float) *3);
 
-	puts("Testing shared lib");
-	hello();
-	float array[3] = {300,500,598};
-	float x = calc_resistance(3,'P',array);
-	printf("%f\n",x);
+  printf("Ange spänningskälla i V:");
+  scanf("%f",&voltage);
+  printf("Ange koppling[S|P]:");
+  scanf(" %c", &sp);
+  printf("Antal komponenter:");
+  scanf("%d", &count);
 
-  printf("%f\n",calc_power_r(50, 1398));
-	printf("%f\n",calc_power_i(50,45));
-
-  float eff = 1398;
-
-  int value = e_resistance(eff, p_array); /* calculate resistors */
-  printf("no of resitors: %d values = %f %f %f \n", value, p_array[0], p_array[1], p_array[2]);
-  free(p_array);    
+  components = (float *)malloc(sizeof(float) *count);
+  
+  for(i = 0; i < count; i++){
+    printf("Komponent %d i ohm:", i+1);
+    scanf("%f", &components[i]);
+  }
+  
+  resistance =  calc_resistance(count,sp,components); /* calculate resistance */
+  printf("Ersattningsresistans: %.1f ohm\n", resistance) ; 
+  printf("Effekt: %.2f W\n",  calc_power_r(voltage, resistance)); /* calculate power */
+   
+  int value = e_resistance(resistance, p_array); /* calculate resistors */
+  printf("Ersättningsresistanser i E12-serien kopplade i serie:  %.1f %.1f %.1f \n", p_array[0], p_array[1], p_array[2]);
+  /* release pointers */
+  free(p_array);
+  free(components);    
            
-	return 0;
+  return 0;
 }
