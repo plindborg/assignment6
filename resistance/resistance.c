@@ -11,15 +11,22 @@ float calc_resistance(int count, char conn, float *array){
   if(array == 0) {
     return -1;
   }
-  
+
   for(int i = 0; i < count; i++) {
-      if(conn == 'P') {
-			  if(array[i] == 0 )
-				  return 0;	
-		  }
-		  total += array[i];
+    if(conn == 'P') { 
+      if(array[i] == 0){
+        return 0;
+      }
+      total += (1/array[i]);
+      if(i == count-1){
+        total = 1/total;
+      }  
+    } 
+    else{
+      total += array[i];
+	  }
   }
-	return total;
+  return total;  
 }
 
 void hello() {
