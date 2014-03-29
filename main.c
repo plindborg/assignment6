@@ -4,7 +4,10 @@
 #include "power/power.h"
 #include "component/component.h"
 
-
+/************************************
+ * Assignment 6 - simple test program
+ * trying out dynamic libraries
+ */ 
 int main(void)
 {
   float *p_array;
