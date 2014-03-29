@@ -1,11 +1,16 @@
 assignment6
 ===========
 
-To install
+Assignment 6 for the linUm course
 
+Install
+```bash
 make
 sudo make install
 make clean
+```
 
-To uninstall
+Uninstall
+```bash
 sudo make uninstall
+```
