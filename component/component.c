@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "component.h"
 
+/*! Library for calculating equivalent series resistance */
+
 /*
  * Function:  e_resitance 
  * --------------------
