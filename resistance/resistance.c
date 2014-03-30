@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+/**
+* \brief Method for calculating the resistance.
+* 
+* Method for calculating the resistance. This is a more detailed   
+* description of the method.
+*/
+
 float calc_resistance(int count, char conn, float *array){
 	float total = 0.0;
 	// Check so that conn is P or S.
