@@ -10,6 +10,10 @@ sudo make install
 make clean
 ```
 
+Just install the libs
+```bash
+make lib
+```
 Uninstall
 ```bash
 sudo make uninstall
